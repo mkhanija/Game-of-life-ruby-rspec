@@ -32,5 +32,29 @@ module GameOfLife
       neighbors
     end
 
+    def process_universe
+      new_universe = Array.new(@height){Array.new(@width, 0)}
+      for y in 0..@height - 1
+        for x in 0..@width - 1
+          neighbors = count_neighbors(y, x)
+          if @grid[y][x] == 1
+            if neighbors < 2 
+              new_universe[y][x] = 0
+            elsif neighbors == 2 || neighbors == 3 
+              new_universe[y][x] = 1
+            else 
+              new_universe[y][x] = 0
+            end
+          else 
+            if neighbors == 3
+              new_universe[y][x] = 1
+            end
+          end
+        end
+      end
+      @grid = new_universe
+      return new_universe
+    end
+
   end
 end

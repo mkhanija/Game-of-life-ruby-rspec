@@ -39,4 +39,45 @@ describe "Universe" do
     expect(universe.count_neighbors(2, 1)).to eq(4)
     expect(universe.count_neighbors(2, 2)).to eq(2)
   end
+
+  it "can process the blinker universe according to each cell and it's neighbors" do
+    blinker_initial_stage = Array.new(3){Array.new(3, 0)}
+    
+    blinker_initial_stage[1][0] = 1
+    blinker_initial_stage[1][1] = 1
+    blinker_initial_stage[1][2] = 1
+
+    blinker_final_stage = Array.new(3){Array.new(3, 0)}
+
+    blinker_final_stage[0][1] = 1
+    blinker_final_stage[1][1] = 1
+    blinker_final_stage[2][1] = 1
+
+    universe = GameOfLife::Universe.new(3, 3, blinker_initial_stage)
+    expect(universe.process_universe).to eq(blinker_final_stage)
+  end
+
+  it "can process the block universe according to each cell and it's neighbors" do
+    block_array = Array.new(3){Array.new(3, 0)}
+    
+    block_array[0][0] = 1
+    block_array[0][1] = 1
+    block_array[1][0] = 1
+    block_array[1][1] = 1
+
+    universe = GameOfLife::Universe.new(3, 3, block_array)
+    expect(universe.process_universe).to eq(block_array)
+  end
+
+  it "can process the tub universe according to each cell and it's neighbors" do
+    block_array = Array.new(3){Array.new(3, 0)}
+    
+    block_array[0][1] = 1
+    block_array[1][0] = 1
+    block_array[1][2] = 1
+    block_array[2][1] = 1
+
+    universe = GameOfLife::Universe.new(3, 3, block_array)
+    expect(universe.process_universe).to eq(block_array)
+  end
 end

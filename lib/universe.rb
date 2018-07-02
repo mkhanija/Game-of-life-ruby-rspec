@@ -59,6 +59,7 @@ module GameOfLife
     end
 
     def print_universe
+      system "clear"
       for i in 0..(height-1)
         for j in 0..(width-1)
           if @grid[i][j] == 1
@@ -69,6 +70,7 @@ module GameOfLife
         end
         print "\n"
       end
+      sleep(0.5)
     end
 
   end

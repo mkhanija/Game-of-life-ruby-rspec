@@ -1,7 +1,15 @@
 module GameOfLife
   class Universe
-    def initialize(grid)
-      @grid = grid
+    attr_reader :grid
+
+    def initialize(filename)
+      input_array = File.readlines("./inputs/" + filename + ".txt")
+      @grid = Array.new(input_array.length){Array.new(input_array[0].length - 1, 0)}
+      for y in 0..(input_array.length-1)
+        for x in 0..(input_array[0].length-2)
+          @grid[y][x] = input_array[y][x].to_i
+        end
+      end
     end
 
     def height()
@@ -10,10 +18,6 @@ module GameOfLife
 
     def width()
       @grid[0].length
-    end
-
-    def grid() 
-      @grid
     end
     
     def count_neighbors(y, x)
@@ -62,8 +66,6 @@ module GameOfLife
         print "\n"
       end
     end
-
-    
 
   end
 end

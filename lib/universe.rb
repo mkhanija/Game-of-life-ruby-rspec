@@ -73,5 +73,12 @@ module GameOfLife
       sleep(0.5)
     end
 
+    def run()
+      loop do
+        print_universe
+        process_universe
+      end
+    end
+
   end
 end

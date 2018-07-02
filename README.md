@@ -22,5 +22,14 @@ $ ruby lib/conway_game_of_life_redo.rb
 $ rspec --format documentation
 ```
 
+## Input filenames
+There are input files provided in the inputs folder. The file names that can be used to run in the main method are as follows:
+- blinker
+- block
+- glider
+- pentadecathlon
+- pulsar
+- tub
+
 ## Author
 Manan Khanija

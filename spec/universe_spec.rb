@@ -28,7 +28,7 @@ describe "Universe" do
     expect(universe.count_neighbors(2, 2)).to eq(2)
   end
 
-  it "can process the blinker universe according to each cell and it's neighbors" do
+  it "can process the blinker universe according to the given rules" do
     blinker_final_stage = Array.new(3){Array.new(3, 0)}
 
     blinker_final_stage[0][1] = 1
@@ -39,7 +39,7 @@ describe "Universe" do
     expect(universe.process_universe).to eq(blinker_final_stage)
   end
 
-  it "can process the block universe according to each cell and it's neighbors" do
+  it "can process the block universe according to the given rules" do
     block_array = Array.new(3){Array.new(3, 0)}
     
     block_array[0][0] = 1
@@ -51,7 +51,7 @@ describe "Universe" do
     expect(universe.process_universe).to eq(block_array)
   end
 
-  it "can process the tub universe according to each cell and it's neighbors" do
+  it "can process the tub universe according to the given rules" do
     tub_array = Array.new(3){Array.new(3, 0)}
     
     tub_array[0][1] = 1

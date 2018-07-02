@@ -5,7 +5,7 @@ describe "Universe" do
     
     grid_array = Array.new(5){Array.new(5, 0)}
 
-    universe = GameOfLife::Universe.new(5, 5, grid_array)
+    universe = GameOfLife::Universe.new(grid_array)
     
     expect(universe.height).to eq(5)
     expect(universe.width).to eq(5)
@@ -27,7 +27,7 @@ describe "Universe" do
     grid_array[2][1] = 1
     grid_array[2][2] = 1
 
-    universe = GameOfLife::Universe.new(3, 3, grid_array)
+    universe = GameOfLife::Universe.new(grid_array)
 
     expect(universe.count_neighbors(0, 0)).to eq(2)
     expect(universe.count_neighbors(0, 1)).to eq(4)
@@ -53,7 +53,7 @@ describe "Universe" do
     blinker_final_stage[1][1] = 1
     blinker_final_stage[2][1] = 1
 
-    universe = GameOfLife::Universe.new(3, 3, blinker_initial_stage)
+    universe = GameOfLife::Universe.new(blinker_initial_stage)
     expect(universe.process_universe).to eq(blinker_final_stage)
   end
 
@@ -65,20 +65,20 @@ describe "Universe" do
     block_array[1][0] = 1
     block_array[1][1] = 1
 
-    universe = GameOfLife::Universe.new(3, 3, block_array)
+    universe = GameOfLife::Universe.new(block_array)
     expect(universe.process_universe).to eq(block_array)
   end
 
   it "can process the tub universe according to each cell and it's neighbors" do
-    block_array = Array.new(3){Array.new(3, 0)}
+    tub_array = Array.new(3){Array.new(3, 0)}
     
-    block_array[0][1] = 1
-    block_array[1][0] = 1
-    block_array[1][2] = 1
-    block_array[2][1] = 1
+    tub_array[0][1] = 1
+    tub_array[1][0] = 1
+    tub_array[1][2] = 1
+    tub_array[2][1] = 1
 
-    universe = GameOfLife::Universe.new(3, 3, block_array)
-    expect(universe.process_universe).to eq(block_array)
+    universe = GameOfLife::Universe.new(tub_array)
+    expect(universe.process_universe).to eq(tub_array)
   end
 
 end

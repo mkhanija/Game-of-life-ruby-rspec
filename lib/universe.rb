@@ -1,17 +1,15 @@
 module GameOfLife
   class Universe
-    def initialize(height, width, grid)
-      @height = height
-      @width = width
-      @grid = grid 
+    def initialize(grid)
+      @grid = grid
     end
 
     def height()
-      @height
+      @grid.length
     end
 
     def width()
-      @width
+      @grid[0].length
     end
 
     def grid() 
@@ -33,9 +31,9 @@ module GameOfLife
     end
 
     def process_universe
-      new_universe = Array.new(@height){Array.new(@width, 0)}
-      for y in 0..@height - 1
-        for x in 0..@width - 1
+      new_universe = Array.new(height){Array.new(width, 0)}
+      for y in 0..height - 1
+        for x in 0..width - 1
           neighbors = count_neighbors(y, x)
           if @grid[y][x] == 1
             if neighbors < 2 
@@ -56,14 +54,16 @@ module GameOfLife
       return new_universe
     end
 
-    def print
-      for i in 0..@height -1
-        for j in 0..@width -1
+    def print_universe
+      for i in 0..(height-1)
+        for j in 0..(width-1)
             print @grid[i][j]
         end
         print "\n"
       end
     end
+
     
+
   end
 end

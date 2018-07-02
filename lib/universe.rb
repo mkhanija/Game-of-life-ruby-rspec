@@ -61,7 +61,11 @@ module GameOfLife
     def print_universe
       for i in 0..(height-1)
         for j in 0..(width-1)
-            print @grid[i][j]
+          if @grid[i][j] == 1
+            print "X"
+          else
+            print " "
+          end
         end
         print "\n"
       end

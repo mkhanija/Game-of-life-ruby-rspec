@@ -1,2 +1,3 @@
-# Your code goes here...
-puts "Update your code here at lib/conway_game_of_life_redo.rb"
+module GameOfLife
+  
+end

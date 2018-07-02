@@ -11,4 +11,32 @@ describe "Universe" do
     expect(universe.width).to eq(5)
     expect(universe.grid).to eq(grid_array)
   end
+
+  it "can count the number of neighbors of different cells in a grid" do
+    grid_array = Array.new(3){Array.new(3, 0)}
+    
+    grid_array[0][0] = 1
+    grid_array[0][1] = 1
+    grid_array[0][2] = 1
+    
+    grid_array[1][0] = 1
+    grid_array[1][1] = 0
+    grid_array[1][2] = 1
+
+    grid_array[2][0] = 1
+    grid_array[2][1] = 1
+    grid_array[2][2] = 1
+
+    universe = GameOfLife::Universe.new(3, 3, grid_array)
+
+    expect(universe.count_neighbors(0, 0)).to eq(2)
+    expect(universe.count_neighbors(0, 1)).to eq(4)
+    expect(universe.count_neighbors(0, 2)).to eq(2)
+    expect(universe.count_neighbors(1, 0)).to eq(4)
+    expect(universe.count_neighbors(1, 1)).to eq(8)
+    expect(universe.count_neighbors(1, 2)).to eq(4)
+    expect(universe.count_neighbors(2, 0)).to eq(2)
+    expect(universe.count_neighbors(2, 1)).to eq(4)
+    expect(universe.count_neighbors(2, 2)).to eq(2)
+  end
 end

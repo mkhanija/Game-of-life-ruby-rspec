@@ -80,4 +80,5 @@ describe "Universe" do
     universe = GameOfLife::Universe.new(3, 3, block_array)
     expect(universe.process_universe).to eq(block_array)
   end
+
 end

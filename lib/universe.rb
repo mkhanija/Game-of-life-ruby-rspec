@@ -56,5 +56,14 @@ module GameOfLife
       return new_universe
     end
 
+    def print
+      for i in 0..@height -1
+        for j in 0..@width -1
+            print @grid[i][j]
+        end
+        print "\n"
+      end
+    end
+    
   end
 end
